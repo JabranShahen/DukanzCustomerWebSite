@@ -41,7 +41,11 @@ h1 {
   color: #436077;
 }
 
-.placeholder-panel {
+.policy-content {
+  margin-top: 28px;
+}
+
+.policy-section {
   margin-top: 28px;
   padding: 24px;
   border-radius: 20px;
@@ -49,14 +53,59 @@ h1 {
   border: 1px solid rgba(24, 50, 70, 0.08);
 }
 
-.placeholder-panel h2 {
-  margin: 0 0 10px;
-  font-size: 1.15rem;
+.policy-section:first-child {
+  margin-top: 0;
 }
 
-.placeholder-panel p {
-  margin: 0;
-  line-height: 1.7;
+.policy-section h2,
+.policy-section h3,
+.policy-section h4 {
+  margin: 0 0 12px;
+}
+
+.policy-section h2 {
+  font-size: 1.35rem;
+}
+
+.policy-section h3 {
+  margin-top: 20px;
+  font-size: 1.05rem;
+}
+
+.policy-section h4 {
+  margin-top: 18px;
+  font-size: 0.98rem;
+}
+
+.policy-section p,
+.policy-section li {
+  line-height: 1.75;
+  color: #35536a;
+}
+
+.policy-section p {
+  margin: 0 0 14px;
+}
+
+.policy-section p:last-child {
+  margin-bottom: 0;
+}
+
+.policy-section ul {
+  margin: 0 0 14px 20px;
+  padding: 0;
+}
+
+.policy-section li + li {
+  margin-top: 8px;
+}
+
+.policy-section a {
+  color: #0d6f9a;
+}
+
+.contact-panel {
+  background: #eef8ff;
 }
 
 .back-link {
