@@ -42,3 +42,8 @@ __screenshots__/
 # System files
 .DS_Store
 Thumbs.db
+
+# Keep deployment workflows visible in git
+!/.github/
+!/.github/workflows/
+!/.github/workflows/*.yml
