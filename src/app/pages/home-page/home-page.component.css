@@ -1,111 +1,293 @@
-.page-shell {
-  min-height: 100vh;
-  padding: 32px 20px 48px;
-  background:
-    radial-gradient(circle at top left, rgba(249, 193, 48, 0.24), transparent 32%),
-    linear-gradient(180deg, #f8f7f1 0%, #ffffff 100%);
-  color: #17251f;
+:host {
+  display: block;
 }
 
-.hero,
-.details-grid {
-  max-width: 1040px;
+.landing-shell {
+  min-height: 100vh;
+  padding: 28px 20px 56px;
+  background:
+    radial-gradient(circle at top left, rgba(254, 206, 84, 0.38), transparent 26%),
+    radial-gradient(circle at 85% 18%, rgba(26, 126, 108, 0.18), transparent 24%),
+    linear-gradient(180deg, #f7f2e8 0%, #fffdf7 42%, #f3f7f0 100%);
+  color: #14251c;
+}
+
+.hero-grid,
+.section-grid,
+.feature-panel,
+.message-strip {
+  width: min(1120px, 100%);
   margin: 0 auto;
 }
 
-.hero {
-  padding: 40px 0 24px;
+.hero-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(320px, 0.9fr);
+  gap: 32px;
+  align-items: center;
+  padding-top: 20px;
 }
 
-.eyebrow {
-  margin: 0 0 12px;
-  font-size: 0.82rem;
+.eyebrow,
+.card-kicker,
+.visual-label {
+  margin: 0;
+  font-size: 0.8rem;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.18em;
-  color: #547060;
+}
+
+.eyebrow {
+  color: #2e6f5d;
 }
 
 h1 {
-  margin: 0;
-  font-size: clamp(2.8rem, 9vw, 5.5rem);
-  line-height: 0.92;
-  letter-spacing: -0.05em;
+  margin: 14px 0 0;
+  font-size: clamp(3.1rem, 7vw, 6rem);
+  line-height: 0.93;
+  letter-spacing: -0.06em;
+  font-family: Georgia, 'Times New Roman', serif;
 }
 
 .lead {
   max-width: 720px;
-  margin: 18px 0 0;
+  margin: 20px 0 0;
   font-size: 1.08rem;
-  line-height: 1.75;
-  color: #395244;
+  line-height: 1.8;
+  color: #385345;
 }
 
-.actions {
-  margin-top: 28px;
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-top: 30px;
 }
 
 .primary-link,
-.text-link {
-  text-decoration: none;
-  font-weight: 600;
-}
-
-.primary-link {
+.secondary-link {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-height: 46px;
-  padding: 0 20px;
+  min-height: 50px;
+  padding: 0 22px;
   border-radius: 999px;
-  background: #17251f;
-  color: #ffffff;
-  box-shadow: 0 16px 30px rgba(23, 37, 31, 0.14);
+  text-decoration: none;
+  font-weight: 700;
 }
 
-.details-grid {
+.primary-link {
+  background: #163327;
+  color: #fff8ef;
+  box-shadow: 0 18px 34px rgba(22, 51, 39, 0.18);
+}
+
+.secondary-link {
+  border: 1px solid rgba(20, 37, 28, 0.14);
+  color: #163327;
+  background: rgba(255, 255, 255, 0.78);
+}
+
+.hero-metrics {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+  padding: 0;
+  margin: 34px 0 0;
+  list-style: none;
+}
+
+.hero-metrics li,
+.feature-card,
+.info-card,
+.visual-card {
+  border: 1px solid rgba(20, 37, 28, 0.08);
+  box-shadow: 0 24px 48px rgba(20, 37, 28, 0.08);
+}
+
+.hero-metrics li {
+  display: grid;
+  gap: 8px;
+  padding: 18px;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.78);
+}
+
+.hero-metrics strong {
+  font-size: 1rem;
+}
+
+.hero-metrics span {
+  color: #476255;
+  line-height: 1.6;
+}
+
+.hero-visual {
+  position: relative;
+  display: grid;
+  gap: 18px;
+}
+
+.visual-card {
+  border-radius: 28px;
+}
+
+.spotlight-card {
+  padding: 30px;
+  background:
+    linear-gradient(155deg, #1b3d2f 0%, #275d48 64%, #306e56 100%);
+  color: #f8f8f2;
+}
+
+.spotlight-card .visual-label,
+.spotlight-card p {
+  color: rgba(248, 248, 242, 0.82);
+}
+
+.spotlight-card h2 {
+  margin: 14px 0 0;
+  font-size: clamp(1.9rem, 4vw, 3rem);
+  line-height: 1.02;
+}
+
+.spotlight-card p {
+  margin: 18px 0 0;
+  line-height: 1.7;
+}
+
+.visual-stack {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 24px;
-  margin-top: 20px;
+  gap: 18px;
 }
 
-.detail-card {
-  padding: 28px;
-  border-radius: 24px;
-  background: rgba(255, 255, 255, 0.92);
-  border: 1px solid rgba(23, 37, 31, 0.08);
-  box-shadow: 0 24px 48px rgba(23, 37, 31, 0.08);
+.mini-card {
+  padding: 22px;
+  background: rgba(255, 250, 242, 0.92);
 }
 
-.detail-card h2 {
-  margin: 0 0 12px;
-  font-size: 1.2rem;
+.alt-card {
+  background: rgba(239, 247, 240, 0.96);
 }
 
-.detail-card p {
+.mini-card p {
+  margin: 12px 0 0;
+  color: #3f5b4d;
+  line-height: 1.65;
+}
+
+.message-strip {
+  margin-top: 26px;
+  padding: 18px 22px;
+  border-radius: 18px;
+  background: rgba(22, 51, 39, 0.92);
+  color: #f8f2e8;
+}
+
+.message-strip p {
   margin: 0;
   line-height: 1.7;
-  color: #4a6355;
 }
 
-.text-link {
-  display: inline-block;
-  margin-top: 14px;
-  color: #0e6f58;
+.section-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 22px;
+  margin-top: 28px;
 }
 
-@media (max-width: 720px) {
-  .page-shell {
-    padding: 20px 16px 32px;
-  }
+.info-card {
+  padding: 28px;
+  border-radius: 28px;
+  background: rgba(255, 255, 255, 0.9);
+}
 
-  .details-grid {
+.accent-card {
+  background:
+    linear-gradient(180deg, rgba(255, 239, 208, 0.98) 0%, rgba(255, 248, 232, 0.98) 100%);
+}
+
+.card-kicker {
+  color: #8b6e2f;
+}
+
+.info-card h2,
+.feature-intro h2 {
+  margin: 14px 0 0;
+  font-size: clamp(1.8rem, 3.4vw, 2.8rem);
+  line-height: 1.08;
+  letter-spacing: -0.04em;
+}
+
+.info-card p {
+  margin: 18px 0 0;
+  color: #425d50;
+  line-height: 1.75;
+}
+
+.feature-panel {
+  margin-top: 28px;
+  padding: 28px;
+  border-radius: 32px;
+  background: rgba(250, 252, 247, 0.94);
+  border: 1px solid rgba(20, 37, 28, 0.08);
+}
+
+.feature-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+  margin-top: 24px;
+}
+
+.feature-card {
+  padding: 22px;
+  border-radius: 22px;
+  background: white;
+}
+
+.feature-card h3 {
+  margin: 0;
+  font-size: 1.12rem;
+}
+
+.feature-card p {
+  margin: 12px 0 0;
+  color: #4d685b;
+  line-height: 1.7;
+}
+
+@media (max-width: 960px) {
+  .hero-grid,
+  .section-grid,
+  .feature-grid,
+  .hero-metrics,
+  .visual-stack {
     grid-template-columns: 1fr;
   }
 
-  .detail-card {
-    padding: 22px;
-    border-radius: 18px;
+  .landing-shell {
+    padding-inline: 16px;
+  }
+}
+
+@media (max-width: 640px) {
+  .landing-shell {
+    padding-top: 16px;
+    padding-bottom: 40px;
+  }
+
+  .spotlight-card,
+  .info-card,
+  .feature-panel {
+    border-radius: 24px;
+  }
+
+  .spotlight-card,
+  .info-card,
+  .feature-card,
+  .mini-card {
+    padding: 20px;
   }
 }

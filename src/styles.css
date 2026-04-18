@@ -1,1 +1,29 @@
-/* You can add global styles to this file, and also import other style files */
+:root {
+  color-scheme: light;
+  font-family: 'Segoe UI', 'Trebuchet MS', Verdana, sans-serif;
+  background: #fffdf7;
+  color: #14251c;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  background: #fffdf7;
+  color: #14251c;
+}
+
+a,
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
