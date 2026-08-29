@@ -1,0 +1,91 @@
+<main class="claim-shell">
+  <section class="claim-header">
+    <div>
+      <p class="eyebrow">Order claim</p>
+      <h1>Order {{ orderId }}</h1>
+    </div>
+    <span class="status-pill" [class.delivered]="canReport">{{ order?.status || 'Loading' }}</span>
+  </section>
+
+  <section *ngIf="loading" class="state-band">Loading order...</section>
+  <section *ngIf="!loading && errorMessage && !order" class="state-band error">{{ errorMessage }}</section>
+
+  <ng-container *ngIf="!loading && order">
+    <section class="claims-band" *ngIf="claims.length > 0">
+      <h2>Claims</h2>
+      <div class="claim-list">
+        <article *ngFor="let claim of claims" class="claim-row">
+          <strong>{{ claim.claimId }}</strong>
+          <span>{{ claim.status }}</span>
+          <span>{{ claim.itemCount }} item{{ claim.itemCount === 1 ? '' : 's' }}</span>
+          <span>{{ claim.attachmentCount }} photo{{ claim.attachmentCount === 1 ? '' : 's' }}</span>
+        </article>
+      </div>
+    </section>
+
+    <section class="state-band" *ngIf="!canReport">Claims are available after delivery.</section>
+
+    <section class="items-band" *ngIf="canReport">
+      <div class="band-heading">
+        <h2>Items</h2>
+        <span>{{ selectedCount }} selected</span>
+      </div>
+
+      <article *ngFor="let item of order.orderItems" class="item-row" [class.selected]="drafts[item.id].selected">
+        <div class="item-main">
+          <button type="button" class="select-button" (click)="toggleItem(item)">
+            {{ drafts[item.id].selected ? 'Selected' : 'Report issue' }}
+          </button>
+          <div>
+            <h3>{{ item.product?.productName || item.id }}</h3>
+            <p>Ordered quantity: {{ item.quantity }}</p>
+          </div>
+        </div>
+
+        <div class="item-controls" *ngIf="drafts[item.id].selected">
+          <label>
+            Issue
+            <select [(ngModel)]="drafts[item.id].issueType">
+              <option *ngFor="let issueType of issueTypes" [value]="issueType">{{ issueType }}</option>
+            </select>
+          </label>
+          <label>
+            Quantity
+            <input
+              type="number"
+              min="1"
+              [max]="item.quantity || 1"
+              [ngModel]="drafts[item.id].quantityClaimed"
+              (ngModelChange)="updateQuantity(item, $event)"
+            />
+          </label>
+          <label class="description-field">
+            Details
+            <textarea maxlength="1000" rows="3" [(ngModel)]="drafts[item.id].description"></textarea>
+          </label>
+        </div>
+      </article>
+    </section>
+
+    <section class="attachments-band" *ngIf="canReport">
+      <div class="band-heading">
+        <h2>Photos</h2>
+        <span>{{ files.length }}/5</span>
+      </div>
+      <input type="file" accept="image/jpeg,image/png" multiple (change)="onFilesSelected($event)" />
+      <div class="file-list" *ngIf="files.length > 0">
+        <button type="button" *ngFor="let file of files" (click)="removeFile(file)">
+          {{ file.name }}
+        </button>
+      </div>
+    </section>
+
+    <section class="submit-band" *ngIf="canReport">
+      <p class="error-text" *ngIf="errorMessage">{{ errorMessage }}</p>
+      <p class="success-text" *ngIf="confirmationClaimId">Claim submitted: {{ confirmationClaimId }}</p>
+      <button type="button" class="submit-button" [disabled]="submitting || selectedCount === 0" (click)="submit()">
+        {{ submitting ? 'Submitting...' : 'Submit claim' }}
+      </button>
+    </section>
+  </ng-container>
+</main>
